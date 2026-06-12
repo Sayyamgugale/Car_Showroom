@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">Awards & Achievements - Apex Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Extra custom styling for the awards listings */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .award-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            transition: var(--transition-smooth);
+        }
+        .award-card:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+        .award-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
+        .award-header i {
+            font-size: 24px;
+            color: #ffd700; /* Gold trophy color */
+            background: rgba(255, 215, 0, 0.08);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .award-header h3 {
+            font-size: 1.35rem;
+            margin: 0;
+        }
+        .award-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .award-list li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.4;
+        }
+        .award-list li::before {
+            content: "✓";
+            color: var(--accent-red);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html"><img id="nav-logo" src="" alt="Showroom Logo"></a>
+        <div class="nav-links" id="navlinks">
+            <i class="fa fa-times" onclick="toggleMenu(false)"></i>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="cars.html">CARS</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="toggleMenu(true)"></i>
+    </nav>   
+
+    <!-- Sub Header Section -->
+    <section class="sub-blog-header">
+        <h1>AWARDS & RECOGNITION</h1>
+    </section>
+    
+    <!-- Awards Grid Content -->
+    <section class="blog-content">
+        <div class="section-header">
+            <h2>Honors & Achievements</h2>
+            <p>Our commitment to precision engineering and customer experience has been recognized globally.</p>
+        </div>
+
+        <div class="awards-grid">
+            <!-- Brand Awards -->
+            <div class="award-card">
+                <div class="award-header">
+                    <i class="fa fa-trophy"></i>
+                    <h3>Porsche Brand</h3>
+                </div>
+                <ul class="award-list">
+                    <li>U.S. News & World Report Best Luxury Brand (2020)</li>
+                    <li>Kelley Blue Book Best Resale Value: Luxury Brand</li>
+                    <li>J.D. Power Customer Service Index (CSI) Luxury Brand Winner</li>
+                    <li>Kelley Blue Book Brand Image Award: Best Styling</li>
+                    <li>Kelley Blue Book Brand Image Award: Best Performance</li>
+                    <li>J.D. Power Sales Satisfaction Index (SSI) Leader</li>
+                </ul>
+            </div>
+
+            <!-- 911 Awards -->
+            <div class="award-card">
+                <div class="award-header">
+                    <i class="fa fa-award"></i>
+                    <h3>911 Series</h3>
+                </div>
+                <ul class="award-list">
+                    <li>MotorTrend Best Driver’s Car - 911 Carrera S</li>
+                    <li>ALG Residual Value Award Winner: 911</li>
+                    <li>Motor Authority Best Car to Buy Award</li>
+                    <li>Automobile Magazine All-Star Winner</li>
+                    <li>Car and Driver 10Best Winner</li>
+                    <li>Edmunds Buyers Most Wanted Luxury Sports Car</li>
+                </ul>
+            </div>
+
+            <!-- Taycan Awards -->
+            <div class="award-card">
+                <div class="award-header">
+                    <i class="fa fa-charging-station"></i>
+                    <h3>Taycan EV</h3>
+                </div>
+                <ul class="award-list">
+                    <li>World Luxury Car of the Year Winner</li>
+                    <li>World Performance Car of the Year Winner</li>
+                    <li>Motorweek Driver’s Choice: Best Dream Machine</li>
+                    <li>Gear Patrol World Luxury Car of the Year</li>
+                    <li>Center of Automotive Management: Most Innovative Model</li>
+                </ul>
+            </div>
+
+            <!-- Panamera Awards -->
+            <div class="award-card">
+                <div class="award-header">
+                    <i class="fa fa-medal"></i>
+                    <h3>Panamera</h3>
+                </div>
+                <ul class="award-list">
+                    <li>Kelley Blue Book Best Resale Value: High-End Luxury</li>
+                    <li>Motorweek Best Dream Machine Winner</li>
+                    <li>Kelley Blue Book 5-Year Cost to Own Winner</li>
+                    <li>Edmunds Best Retained Value Award Winner</li>
+                </ul>
+            </div>
+
+            <!-- Cayenne Awards -->
+            <div class="award-card">
+                <div class="award-header">
+                    <i class="fa fa-crown"></i>
+                    <h3>Cayenne SUV</h3>
+                </div>
+                <ul class="award-list">
+                    <li>Car and Driver Editor's Choice Winner</li>
+                    <li>Kelley Blue Book: 10 Best Luxury SUVs</li>
+                    <li>J.D. Power APEAL Study: Midsize Premium SUV Winner</li>
+                    <li>AutoPacific Best in Class Premium Crossover</li>
+                    <li>Popular Science "Best of What's New" Winner</li>
+                </ul>
+            </div>
+
+            <!-- Macan Awards -->
+            <div class="award-card">
+                <div class="award-header">
+                    <i class="fa fa-certificate"></i>
+                    <h3>Macan SUV</h3>
+                </div>
+                <ul class="award-list">
+                    <li>ALG Residual Value Award: Premium Compact</li>
+                    <li>Kelley Blue Book Best Resale Value: Luxury SUV</li>
+                    <li>Car and Driver 10Best Trucks and SUVs Winner</li>
+                    <li>J.D. Power APEAL Study: Compact Premium SUV Winner</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feedback Form Block -->
+        <div class="contact-form-container" style="max-width: 600px; margin: 0 auto;">
+            <h3>Leave Your Feedback</h3>
+            <form action="form-handler.php" method="POST" class="feedback-form">
+                <input type="hidden" name="preference" value="Feedback Form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Enter Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" name="message" placeholder="Enter Feedback Description" required></textarea>
+                </div>
+                <button type="submit" class="hero-btn" style="width: 100%;">Post Feedback</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <h4 id="footer-brand">APEX SHOWROOM</h4>
+        <p id="footer-desc">Get to know our legacy, specs details, and stay up-to-date with the latest showroom announcements.</p>
+        <p class="footer-quote-text" id="footer-quote"></p>
+        
+        <div class="icons">
+            <a href="#" class="social-link" id="social-fb"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="social-link" id="social-tw"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link" id="social-ig"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" id="social-li"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+
+        <p class="copyright-text">Coded with <i class="fa-solid fa-heart"></i> by Sayyam Gugale | Powered by <span id="copyright-brand">Apex Auto</span> &copy; <span id="current-year"></span></p>
+    </section>    
+
+    <!-- Core Logic & Dynamic Loading -->
+    <script src="config.js"></script>
+    <script>
+        // Set dynamic branding and configurations
+        document.getElementById('meta-title').textContent = 'Awards - ' + showroomConfig.brandName;
+        document.getElementById('nav-logo').src = showroomConfig.logoSrc;
+        
+        document.getElementById('footer-brand').textContent = showroomConfig.brandName;
+        document.getElementById('copyright-brand').textContent = showroomConfig.shortName;
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Footer Quote
+        if (showroomConfig.quotes && showroomConfig.quotes.length > 0) {
+            const randomQuote = showroomConfig.quotes[Math.floor(Math.random() * showroomConfig.quotes.length)];
+            document.getElementById('footer-quote').innerHTML = `"${randomQuote.text}" &mdash; <strong>${randomQuote.author}</strong>`;
+        }
+
+        // Hamburger Menu Controls
+        var navlinks = document.getElementById("navlinks");  
+        function toggleMenu(show) {
+            if (show) {
+                navlinks.classList.add("active");
+            } else {
+                navlinks.classList.remove("active");
+            }
+        }
+    </script>
+</body>
+</html>

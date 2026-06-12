@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">About Us - Apex Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html"><img id="nav-logo" src="" alt="Showroom Logo"></a>
+        <div class="nav-links" id="navlinks">
+            <i class="fa fa-times" onclick="toggleMenu(false)"></i>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="cars.html">CARS</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="toggleMenu(true)"></i>
+    </nav>   
+
+    <!-- Sub Header Section -->
+    <section class="sub-header">
+        <h1>ABOUT US</h1>
+    </section>
+    
+    <!-- About Page Main Content Grid -->
+    <section class="about-us">
+        <div class="about-grid">
+            <div class="about-text">
+                <h1 id="about-title">We craft pure emotion. We build powerful machines.</h1>
+                <h3 id="about-heading" style="color: var(--accent-red); margin-bottom: 20px; font-weight: 500; font-size: 1.25rem;">Our roots are in racing, and our future is in innovation.</h3>
+                <p id="about-desc">As a global leader in the luxury sports car market, we continue to innovate, inspired by our heritage and driven by our vision for the future. With a global community of enthusiasts and dealerships in over 100 countries, we invite you to join our family and experience the art of performance driving. Our vehicles combine raw driving pleasure with everyday usability.</p>
+                <a href="cars.html" class="hero-btn" id="about-cta-text">EXPLORE FLEET</a>
+            </div>
+            <div class="about-img-container">    
+                <img id="about-img" src="" alt="About Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Stats Grid -->
+    <section style="background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="section-header">
+            <h2>Our Core Values</h2>
+            <p>What defines our motoring philosophy and dedication to engineering.</p>
+        </div>
+        <div class="row-grid">
+            <div class="CARS-col">
+                <h3>Heritage</h3>
+                <p>Decades of track-proven racing DNA and precision development that shape every cornering maneuver.</p>
+            </div>
+            <div class="CARS-col">
+                <h3>Innovation</h3>
+                <p>Pioneering active aerodynamics, torque vectoring systems, and hyper-efficient high-voltage architectures.</p>
+            </div>
+            <div class="CARS-col">
+                <h3>Usability</h3>
+                <p>Creating sports vehicles engineered for extreme track performance that remain comfortable for daily travel.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <section class="footer">
+        <h4 id="footer-brand">APEX SHOWROOM</h4>
+        <p id="footer-desc">Get to know our legacy, specs details, and stay up-to-date with the latest showroom announcements.</p>
+        <p class="footer-quote-text" id="footer-quote"></p>
+        
+        <div class="icons">
+            <a href="#" class="social-link" id="social-fb"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="social-link" id="social-tw"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link" id="social-ig"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" id="social-li"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+
+        <p class="copyright-text">Coded with <i class="fa-solid fa-heart"></i> by Sayyam Gugale | Powered by <span id="copyright-brand">Apex Auto</span> &copy; <span id="current-year"></span></p>
+    </section>    
+
+    <!-- Core Logic & Dynamic Loading -->
+    <script src="config.js"></script>
+    <script>
+        // Set dynamic branding and configurations
+        document.getElementById('meta-title').textContent = 'About Us - ' + showroomConfig.brandName;
+        document.getElementById('nav-logo').src = showroomConfig.logoSrc;
+        
+        // Dynamically inject text variables
+        document.getElementById('about-title').textContent = showroomConfig.aboutTitle;
+        document.getElementById('about-heading').textContent = showroomConfig.aboutHeading;
+        document.getElementById('about-desc').textContent = showroomConfig.aboutDescription;
+        document.getElementById('about-cta-text').textContent = showroomConfig.aboutCtaText;
+        document.getElementById('about-img').src = showroomConfig.aboutImage;
+        
+        document.getElementById('footer-brand').textContent = showroomConfig.brandName;
+        document.getElementById('copyright-brand').textContent = showroomConfig.shortName;
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Footer Quote
+        if (showroomConfig.quotes && showroomConfig.quotes.length > 0) {
+            const randomQuote = showroomConfig.quotes[Math.floor(Math.random() * showroomConfig.quotes.length)];
+            document.getElementById('footer-quote').innerHTML = `"${randomQuote.text}" &mdash; <strong>${randomQuote.author}</strong>`;
+        }
+
+        // Hamburger Menu Controls
+        var navlinks = document.getElementById("navlinks");  
+        function toggleMenu(show) {
+            if (show) {
+                navlinks.classList.add("active");
+            } else {
+                navlinks.classList.remove("active");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">Car Showroom - Luxury Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html"><img id="nav-logo" src="" alt="Showroom Logo"></a>
+        <div class="nav-links" id="navlinks">
+            <i class="fa fa-times" onclick="toggleMenu(false)"></i>
+            <ul>      
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="cars.html">CARS</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="toggleMenu(true)"></i>
+    </nav>   
+
+    <!-- Hero Header Section -->
+    <section class="header" id="hero-bg">
+        <div class="text-box">
+            <h1 id="hero-title">CAR SHOWROOM</h1>
+            <p id="hero-subtitle">Experience the finest quality in motoring history.</p>
+            <a href="cars.html" class="hero-btn" id="hero-cta">Explore Collection</a>
+        </div>
+    </section>
+    
+    <!-- Core Offerings Categories Section -->
+    <section>
+        <div class="section-header">
+            <h2>Categories We Offer</h2>
+            <p>Best cars with unbeatable driving dynamics and personalized assistance.</p>
+        </div>
+        <div class="row-grid">
+            <div class="CARS-col">
+                <h3>Sedans</h3>
+                <p>Designed for absolute executive comfort, passenger room, fuel efficiency, and seamless everyday performance.</p>
+            </div>
+            <div class="CARS-col">
+                <h3>Coupes</h3>
+                <p>Sleek proportions, lower centers of gravity, responsive steering, and a thrilling driving experience.</p>
+            </div>
+            <div class="CARS-col">
+                <h3>Sports & Track</h3>
+                <p>Extreme engineering, motorsport heritage, exceptional aerodynamics, and thrilling adrenaline rushes.</p>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Featured Cars Grid -->
+    <section class="featured-section" style="background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="section-header">
+            <h2>Featured Collection</h2>
+            <p>Discover a handpicked selection of our premium inventory.</p>
+        </div>
+        <div class="cars-grid" id="featured-cars-container">
+            <!-- Loaded dynamically from config.js -->
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="cars.html" class="hero-btn outline">View Full Inventory</a>
+        </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>Read inspiring experiences shared by our global automotive family.</p>
+        </div>
+        <div class="testimonials-grid" id="testimonials-container">
+            <!-- Loaded dynamically from config.js -->
+        </div>
+    </section>
+    
+    <!-- Call to Action (CTA) -->
+    <section class="cta">
+        <h2>Consult Our Experts</h2>
+        <p>Talk to our brand advisers today. They will guide you through custom specs configurations, test drives, and client acquisition details.</p>
+        <a href="contact.html" class="hero-btn">Get In Touch</a>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <h4 id="footer-brand">APEX SHOWROOM</h4>
+        <p id="footer-desc">Get to know our legacy, specs details, and stay up-to-date with the latest showroom announcements.</p>
+        <p class="footer-quote-text" id="footer-quote"></p>
+        
+        <div class="icons">
+            <a href="#" class="social-link" id="social-fb"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="social-link" id="social-tw"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link" id="social-ig"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" id="social-li"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+
+        <p class="copyright-text">Coded with <i class="fa-solid fa-heart"></i> by Sayyam Gugale | Powered by <span id="copyright-brand">Apex Auto</span> &copy; <span id="current-year"></span></p>
+    </section>    
+
+    <!-- Core Logic & Dynamic Injections -->
+    <script src="config.js"></script>
+    <script>
+        // Set dynamic branding and configurations
+        document.getElementById('meta-title').textContent = showroomConfig.brandName + ' - Luxury Gallery';
+        document.getElementById('nav-logo').src = showroomConfig.logoSrc;
+        document.getElementById('hero-title').textContent = showroomConfig.heroTitle;
+        document.getElementById('hero-subtitle').textContent = showroomConfig.heroSubtitle;
+        document.getElementById('hero-cta').textContent = showroomConfig.heroCtaText;
+        document.getElementById('hero-cta').href = showroomConfig.heroCtaLink;
+        document.getElementById('footer-brand').textContent = showroomConfig.brandName;
+        document.getElementById('copyright-brand').textContent = showroomConfig.shortName;
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Load a random quote in footer
+        if (showroomConfig.quotes && showroomConfig.quotes.length > 0) {
+            const randomQuote = showroomConfig.quotes[Math.floor(Math.random() * showroomConfig.quotes.length)];
+            document.getElementById('footer-quote').innerHTML = `"${randomQuote.text}" &mdash; <strong>${randomQuote.author}</strong>`;
+        }
+
+        // Render Featured Cars (Display first 3 cars from config)
+        const featuredContainer = document.getElementById('featured-cars-container');
+        const featuredCars = showroomConfig.cars.slice(0, 3);
+        
+        featuredCars.forEach(car => {
+            const card = document.createElement('div');
+            card.className = 'car-card';
+            card.innerHTML = `
+                <div class="car-card-img-wrapper">
+                    <img src="${car.image}" alt="${car.name}">
+                </div>
+                <div class="car-card-content">
+                    <span class="car-card-category">${car.category}</span>
+                    <h3>${car.name}</h3>
+                    <p>${car.shortDesc}</p>
+                    <div class="car-card-footer">
+                        <span class="car-price">${car.price}</span>
+                        <a href="cars.html?id=${car.id}" class="car-card-btn">View Specs</a>
+                    </div>
+                </div>
+            `;
+            featuredContainer.appendChild(card);
+        });
+
+        // Render Testimonials (Display first 3 testimonials)
+        const testimonialsContainer = document.getElementById('testimonials-container');
+        const activeTestimonials = showroomConfig.testimonials.slice(0, 3);
+
+        activeTestimonials.forEach(t => {
+            // Generate star rating icons HTML
+            let starsHtml = '';
+            const fullStars = Math.floor(t.rating);
+            const hasHalf = t.rating % 1 !== 0;
+            
+            for (let i = 0; i < 5; i++) {
+                if (i < fullStars) {
+                    starsHtml += '<i class="fa-solid fa-star"></i> ';
+                } else if (i === fullStars && hasHalf) {
+                    starsHtml += '<i class="fa-solid fa-star-half-stroke"></i> ';
+                } else {
+                    starsHtml += '<i class="fa-regular fa-star"></i> ';
+                }
+            }
+
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            card.innerHTML = `
+                <p class="testimonial-text">"${t.feedback}"</p>
+                <div class="testimonial-author">
+                    <img src="${t.avatar}" alt="${t.name}">
+                    <div>
+                        <h4 class="testimonial-name">${t.name}</h4>
+                        <div class="testimonial-stars">${starsHtml}</div>
+                    </div>
+                </div>
+            `;
+            testimonialsContainer.appendChild(card);
+        });
+
+        // Responsive Hamburger Mobile Menu Handler
+        var navlinks = document.getElementById("navlinks");  
+        function toggleMenu(show) {
+            if (show) {
+                navlinks.classList.add("active");
+            } else {
+                navlinks.classList.remove("active");
+            }
+        }
+    </script>
+</body>
+</html>

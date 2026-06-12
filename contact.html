@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">Contact Us - Apex Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html"><img id="nav-logo" src="" alt="Showroom Logo"></a>
+        <div class="nav-links" id="navlinks">
+            <i class="fa fa-times" onclick="toggleMenu(false)"></i>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="cars.html">CARS</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="toggleMenu(true)"></i>
+    </nav>   
+
+    <!-- Sub Header Section -->
+    <section class="sub-contact-header">
+        <h1>CONTACT US</h1>
+    </section>
+    
+    <!-- Contact Info & Form -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <!-- Left Column: Contact Cards -->
+            <div class="contact-info-cards">
+                <div class="contact-card">
+                    <i class="fa fa-home"></i>
+                    <div>
+                        <h4>Address</h4>
+                        <p id="contact-address">Ground Floor, Savoy Chambers, Santacruz (West), Mumbai, Maharashtra 400054</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fa fa-phone"></i>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p id="contact-phone">+91 022 6236 2911</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fa fa-envelope"></i>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p id="contact-email">info@porsche.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fa fa-clock"></i>
+                    <div>
+                        <h4>Hours</h4>
+                        <p id="contact-hours">Monday to Saturday, 9:30AM to 7:00PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Contact Form -->
+            <div class="contact-form-container">
+                <h3>Request Consultation</h3>
+                <form id="contact-form" action="" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Enter your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Enter your Email Address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select name="preference" id="car-select-dropdown" required>
+                            <option value="" disabled selected>Select Preferred Model</option>
+                            <option value="general">General Inquiry</option>
+                            <!-- Loaded dynamically from config.js -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea rows="6" name="message" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="hero-btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Map Section -->
+    <section style="padding-top: 0;">
+        <div class="location-map-wrapper">
+            <iframe id="contact-map" src="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <h4 id="footer-brand">APEX SHOWROOM</h4>
+        <p id="footer-desc">Get to know our legacy, specs details, and stay up-to-date with the latest showroom announcements.</p>
+        <p class="footer-quote-text" id="footer-quote"></p>
+        
+        <div class="icons">
+            <a href="#" class="social-link" id="social-fb"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="social-link" id="social-tw"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link" id="social-ig"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" id="social-li"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+
+        <p class="copyright-text">Coded with <i class="fa-solid fa-heart"></i> by Sayyam Gugale | Powered by <span id="copyright-brand">Apex Auto</span> &copy; <span id="current-year"></span></p>
+    </section>    
+
+    <!-- Core Logic & Dynamic Loading -->
+    <script src="config.js"></script>
+    <script>
+        // Set dynamic branding and configurations
+        document.getElementById('meta-title').textContent = 'Contact Us - ' + showroomConfig.brandName;
+        document.getElementById('nav-logo').src = showroomConfig.logoSrc;
+        
+        // Dynamically inject contact info text variables
+        document.getElementById('contact-address').textContent = showroomConfig.contact.address;
+        document.getElementById('contact-phone').textContent = showroomConfig.contact.phone;
+        document.getElementById('contact-email').textContent = showroomConfig.contact.email;
+        document.getElementById('contact-hours').textContent = showroomConfig.contact.workingHours;
+        document.getElementById('contact-map').src = showroomConfig.contact.mapEmbedUrl;
+        document.getElementById('contact-form').action = showroomConfig.contact.formHandlerUrl;
+        
+        document.getElementById('footer-brand').textContent = showroomConfig.brandName;
+        document.getElementById('copyright-brand').textContent = showroomConfig.shortName;
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Populate Car Models Dropdown dynamically
+        const carSelect = document.getElementById('car-select-dropdown');
+        showroomConfig.cars.forEach(car => {
+            const opt = document.createElement('option');
+            opt.value = car.name;
+            opt.textContent = `${car.name} (${car.price})`;
+            carSelect.appendChild(opt);
+        });
+
+        // Footer Quote
+        if (showroomConfig.quotes && showroomConfig.quotes.length > 0) {
+            const randomQuote = showroomConfig.quotes[Math.floor(Math.random() * showroomConfig.quotes.length)];
+            document.getElementById('footer-quote').innerHTML = `"${randomQuote.text}" &mdash; <strong>${randomQuote.author}</strong>`;
+        }
+
+        // Hamburger Menu Controls
+        var navlinks = document.getElementById("navlinks");  
+        function toggleMenu(show) {
+            if (show) {
+                navlinks.classList.add("active");
+            } else {
+                navlinks.classList.remove("active");
+            }
+        }
+    </script>
+</body>
+</html>
